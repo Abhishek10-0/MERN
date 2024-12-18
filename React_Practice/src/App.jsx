@@ -1,10 +1,33 @@
 import React from 'react'
 
 function App() {
+  
+  let user = "Abhishek"
+
+  // let ser = ()=>{
+  //   console.log(user)
+
+  //   user = "ayush"
+  //   console.log(user)
+    
+  // }
+
+  // function abc(){
+  //   console.log("Hello");
+  // }
+  // abc()
+
+
+  const abc = () => {
+    console.log("Hello World");
+    
+  }
+
   return (
     <div>
-      <h1></h1>
+    <button onClick={abc}>click</button>
     </div>
+
   )
 }
 
