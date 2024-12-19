@@ -1,33 +1,13 @@
 import React from 'react'
 
 function App() {
-  
-  let user = "Abhishek"
-
-  // let ser = ()=>{
-  //   console.log(user)
-
-  //   user = "ayush"
-  //   console.log(user)
-    
-  // }
-
-  // function abc(){
-  //   console.log("Hello");
-  // }
-  // abc()
-
-
-  const abc = () => {
-    console.log("Hello World");
-    
-  }
-
   return (
     <div>
-    <button onClick={abc}>click</button>
+        <form className='px-4 py-4 bg-slate-300'>
+            <input className='border-2 border-black px-5 py-3 rounded-xl' type="text" placeholder='Enter your name:'/>
+            <button className='border-2 border-black px-7 py-2 rounded-full bg-red-400 forced-colors:hidden' >Submit</button>
+        </form>
     </div>
-
   )
 }
 
