@@ -1,6 +1,6 @@
 // Password Generator
 
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useRef} from "react";
 
 function App() {
   const [length, setLength] = useState(8);
@@ -32,6 +32,14 @@ function App() {
     passwordGenerator();
   }, [length, numberAllowed, charAllowed, passwordGenerator]);
 
+  const passwordRef = useRef(null)
+
+  const copyPasswordToClipboard = useCallback(() => {
+      passwordRef.current?.select();
+      passwordRef.current?.setSelectionRange(0, 999);
+      window.navigator.clipboard.writeText(password)
+  }, [password])
+
   return (
     <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 bg-gray-800 text-orange-500">
       <h1 className="text-white text-center my-3">Password generator</h1>
@@ -42,8 +50,11 @@ function App() {
           placeholder="Password"
           className="outline-none w-full py-2 px-4"
           readOnly
+          ref={passwordRef}
         />
-        <button className="bg-blue-700 text-white px-4 outline-none">
+        <button 
+        onClick={copyPasswordToClipboard}
+        className="bg-blue-700 text-white px-4 outline-none">
           copy
         </button>
       </div>
@@ -56,7 +67,7 @@ function App() {
             value={length}
             className="cursor-pointer"
             onChange={(e) => {
-              setLength(e.target.value);
+              setLength(Number(e.target.value));
             }}
           />
           <label>Length: {length}</label>
