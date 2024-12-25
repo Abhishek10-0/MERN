@@ -4,9 +4,11 @@ import React, {useState} from 'react'
 function App() {
   const [color, setColor] = useState("olive")
   return (
-    <div className="w-full h-screen duration-200" 
+    <div className="w-full h-screen duration-200 flex items-center justify-center" 
     style={{backgroundColor: color}} >
        
+       <h1 className='absolute text-4xl font-bold text-white uppercase '>{color}</h1>
+
        <div className='fixed flex flex-wrap justify-center bottom-20 inset-x-0 px-20'> 
 
         <div className='flex flex-wrap justify-center gap-3 shadow-lg bg-white px-3 py-2 rounded-3xl'>
