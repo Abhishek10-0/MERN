@@ -25,6 +25,7 @@ function About() {
                                 Nobis minus voluptatibus pariatur dignissimos libero quaerat iure expedita at?
                                 Asperiores nemo possimus nesciunt dicta veniam aspernatur quam mollitia.
                             </p>
+                        
                         </div>
                     </div>
                 </div>
