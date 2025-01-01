@@ -1,10 +1,15 @@
-import React from "react"
+import React from 'react';
+import UserContext from './UserContext';
+import Login from './Login';
+import Profile from './Profile';
 
 function App() {
-
   return (
-  <h1></h1>
-  )
+    <UserContext>
+      <Login />
+      <Profile />
+    </UserContext>
+  );
 }
 
-export default App
+export default App;
