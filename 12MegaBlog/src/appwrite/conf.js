@@ -17,6 +17,7 @@ export class Service{
         this.bucket = new Storages(this.client);
     }
 
+
     async createPost({title , slug, content, featuredImage , status , UserId }){
         try{
             return await this.database.createDocument(config.appwriteDatabaseId, config.appwriteCollectionId, ID.unique,
@@ -73,6 +74,48 @@ export class Service{
     }
 
     
+    async getPosts(queries = [Query.equals('status', 'active')]){
+        try {
+
+            return await this.database.listDocuments(config.appwriteDatabaseId, config.appwriteCollectionId, queries);
+        }catch(error){
+            console.log("Appwrite service :: getPosts :: error", error);
+            return false;
+        }
+
+    }
+
+
+    async uploadFile(file){
+        try {
+            return await this.bucket.createFile(
+                config.appwriteBucketId,
+                ID.unique,
+                file
+            )
+            
+        } catch (error) {
+            console.log("Appwrite service :: uploadFile :: error", error);
+            return false;
+        }
+    }
+
+
+    async deletePost(fileId){
+        try {
+            await this.bucket.deleteFile(config.appwriteBucketId, fileId);
+            return true;
+            
+        } catch ( error) {
+            console.log("Appwrite service :: deleteFile :: error", error);
+            return false;
+            
+        }
+    }
+
+    getFilePreview(fileId){
+        return this.bucket.getFilePreview(config.appwriteBucketId, fileId);
+        }
 }
 
 
