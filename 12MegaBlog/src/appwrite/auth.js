@@ -59,7 +59,6 @@ class AuthService{
     }
 
 
-    
 // export default AuthService;  
 // (isse use karne ke liye export karna padega or object banana padega)
 
