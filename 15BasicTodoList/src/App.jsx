@@ -3,12 +3,22 @@ import React,{useState} from 'react'
 function App() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState([])
+  const [editIndex , setEditIndex] = useState(null)
 
   const handleAddTask = () => {
     if (task.trim() === "") return;
+
+    if(editIndex !== null) {
+      const updatedTask = tasks.map((t, index) => 
+        index === editIndex ? task : t
+      );
+      setTasks(updatedTask);
+      setEditIndex(null);
+    }else{
+
     setTasks([...tasks, task]); 
     setTask("")
- 
+    }
   };
 
   const removeTask = (index) => {
@@ -16,6 +26,11 @@ function App() {
 
     setTasks(newTasks)
 
+  }
+
+  const updateTask = (index) => {
+    setTask(tasks[index]); 
+    setEditIndex(index);    
   }
 
   return (
@@ -41,6 +56,9 @@ function App() {
     
     <button onClick={() => removeTask(index)}>
       X
+    </button>
+    <button onClick={() => updateTask(index)}>
+      Update
     </button>
      </li>
   ))}
