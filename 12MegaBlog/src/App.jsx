@@ -3,6 +3,8 @@ import config from './config/config'
 import { useDispatch} from 'react-redux'
 import authService from './appwrite/auth'
 import './App.css'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 
 
 function App() {
@@ -32,11 +34,11 @@ function App() {
     <div className='min-h-screen bg-gray-400 flex flex-wrap content-between'>
 
       <div className='w-full block'>
-        {/* <Header /> */}
+        <Header/>
         <main>
           Hello
         </main>
-        {/* <Footer /> */}
+        <Footer/>
       </div>
     </div>
   ) : null
