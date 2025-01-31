@@ -41,7 +41,7 @@ function App() {
 
   return (
     <>
-    <div className='bg-gray-800 h-screen'>
+    <div className='bg-gray-500 h-screen'>
 
     <input 
     type="text" 
