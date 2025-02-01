@@ -1,4 +1,6 @@
+import { parse } from 'dotenv';
 import React from 'react'
+import { useEffect } from 'react';
 import { useState } from 'react'
 
 function App() {
@@ -8,6 +10,25 @@ function App() {
   const [notes, setNotes] = useState([]);
   const [editIndex, setEditIndex] = useState(null)
 
+
+  useEffect(() => {
+    const savedNotes = localStorage.getItem("notes")  // notes is again converted as array 
+    if(savedNotes){
+      try {
+        setNotes(JSON.parse(savedNotes))
+        
+      } catch (error) {
+        console.log(error);
+        
+      }
+      
+    }
+  })
+
+  useEffect(() => { 
+    if(notes.length > 0) {
+    localStorage.setItem("notes", JSON.stringify(notes)) // notes is converted as string and stored in localstorage
+  }},[notes])
 
   const handleSubmit = () => {
 
